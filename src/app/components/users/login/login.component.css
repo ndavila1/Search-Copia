@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('https://www.trecebits.com/wp-content/uploads/2018/01/mundo-1.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 660px;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 220px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+
+.social_icon{
+position: absolute;
+right: 170px;
+top: 45px;
+width: 100px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
