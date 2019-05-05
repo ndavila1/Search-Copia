@@ -8,15 +8,14 @@ export class Convocatoria {
     UID: string;
     profesion: string;
     descripcion: string;
-    habilidades: string[];
+    habilidades: string;
 
     formulario = new FormGroup ({
-        estado: new FormControl(''),
         fechaInicio: new FormControl(''),
         fechaFin: new FormControl(''),
         UID: new FormControl(''),
         profesion: new FormControl(''),
         descripcion: new FormControl(''),
-        habilidades: new FormArray([])
+        habilidades: new FormControl('')
     });
 }
