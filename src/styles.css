@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-morado{
+    background-color: #ac17da !important;
+}
+
+.btn-morado {
+    background-color: #ac17da;
+    color: white;
+}
+
+.btn-morado:hover {
+    background-color: #4e0963;
+    color: white;
+}

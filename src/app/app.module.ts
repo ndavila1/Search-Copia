@@ -13,6 +13,7 @@ import { LoginComponent } from './components/users/login/login.component';
 import { RegistroComponent } from './components/users/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,12 @@ import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.co
     ConvocatoriaComponent
   ],
   imports: [
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    }),
     BrowserModule,
     AppRoutingModule,
     AngularFireAuthModule,
