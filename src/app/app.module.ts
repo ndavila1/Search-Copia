@@ -9,11 +9,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { LoginComponent } from './components/users/login/login.component';
 import { RegistroComponent } from './components/users/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { CitacionComponent } from './components/citacion/citacion.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     LoginComponent,
     RegistroComponent,
     HomeComponent,
-    ConvocatoriaComponent
+    ConvocatoriaComponent,
+    CitacionComponent
   ],
   imports: [
     SweetAlert2Module.forRoot({
