@@ -18,6 +18,7 @@ export class AuthService {
       } else {
         localStorage.setItem('user', null);
       }
+
     });
   }
   async login(email: string, password: string) {
@@ -45,9 +46,13 @@ export class AuthService {
       await this.afAuth.auth.signInWithPopup(
         new firebase.auth.GoogleAuthProvider()
       );
-      this.router.navigate(['nombre de la pagina que quiere mostar']);
+      this.router.navigate(['home']);
     } catch (e) {
       alert('Error!' + e.message);
     }
+  }
+
+  getUser(){
+    return this.user;
   }
 }
