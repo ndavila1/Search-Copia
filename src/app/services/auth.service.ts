@@ -9,12 +9,13 @@ import * as firebase from 'firebase/app';
 })
 export class AuthService {
   user: User;
-
+  
   constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        
       } else {
         localStorage.setItem('user', null);
       }
@@ -40,19 +41,20 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
-
   async googleLogin() {
     try {
       await this.afAuth.auth.signInWithPopup(
         new firebase.auth.GoogleAuthProvider()
       );
       this.router.navigate(['home']);
+      
     } catch (e) {
       alert('Error!' + e.message);
     }
   }
 
   getUser(){
+    
     return this.user;
   }
 }

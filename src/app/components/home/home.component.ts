@@ -9,10 +9,12 @@ import { AuthService } from './../../services/auth.service';
 export class HomeComponent implements OnInit {
 
   public usuario:string ='';
-
+  public users:any ='';
   constructor(public afAuth: AuthService) {
 
-    this.usuario=this.afAuth.getUser().displayName;
+    this.users=JSON.parse(localStorage.getItem('user'));
+    this.usuario = this.users['displayName'];
+    //this.usuario=localStorage.getItem('user');
    }
 
   ngOnInit() {

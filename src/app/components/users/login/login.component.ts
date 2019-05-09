@@ -15,5 +15,5 @@ export class LoginComponent implements OnInit {
   iniciarSesionGoogle(){
     this.authService.googleLogin();
   }
-
+  
 }
