@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <agm-map [latitude]="this.latitud" [longitude]="this.longitud">
+    <agm-marker [latitude]="this.marcaLocalizacion.latitud" [longitude]="this.marcaLocalizacion.longitud"
+      [label]="this.marcaLocalizacion.etiqueta" [markerDraggable]="this.marcaLocalizacion.movible">
+    </agm-marker>
+  </agm-map>
+</div>

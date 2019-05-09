@@ -10,12 +10,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AgmCoreModule } from '@agm/core';
 
 import { LoginComponent } from './components/users/login/login.component';
 import { RegistroComponent } from './components/users/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
 import { CitacionComponent } from './components/citacion/citacion.component';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CitacionComponent } from './components/citacion/citacion.component';
     RegistroComponent,
     HomeComponent,
     ConvocatoriaComponent,
-    CitacionComponent
+    CitacionComponent,
+    MapaComponent
   ],
   imports: [
     SweetAlert2Module.forRoot({
@@ -39,7 +42,11 @@ import { CitacionComponent } from './components/citacion/citacion.component';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+      //En caso de no servir AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM
+    })
   ],
   providers: [
     AngularFirestore
