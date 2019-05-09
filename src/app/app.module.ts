@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
 import { CitacionComponent } from './components/citacion/citacion.component';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MapaComponent } from './components/mapa/mapa.component';
     HomeComponent,
     ConvocatoriaComponent,
     CitacionComponent,
-    MapaComponent
+    MapaComponent,
+    NavComponent
   ],
   imports: [
     SweetAlert2Module.forRoot({

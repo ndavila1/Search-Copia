@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl  } from '@angular/forms';
 
 export class Convocatoria {
     id: string;
