@@ -1,0 +1,9 @@
+.container{
+    max-width: 100rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: end;
+    text-transform: uppercase;
+    background: rgb(35, 177, 78);
+    color: rgba(0, 0, 0, 0.932);
+}

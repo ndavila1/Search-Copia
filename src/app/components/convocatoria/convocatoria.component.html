@@ -1,7 +1,7 @@
-<div class="container-fluid">
-    <div class="row mt-4">
+<div class="container-fluid" >
+    <div class="row mt-4" >
         <div class="col-sm-5">
-            <form class="form-horizontal" [formGroup]="this.convocatoriaTemp.formulario">
+            <form class="form-horizontal" [formGroup]="this.convocatoriaTemp.formulario" >
                 <div class="header">CREAR CONVOCATORIA</div>
                 <div class="form-content">
                     <div class="form-group row">
@@ -37,7 +37,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <button class="btn btn-morado" (click)="guardar()">Guardar</button>
+                            <button class="btn btn-outline-success" (click)="guardar()">Guardar</button>
+                        </div>
+                        <div class="col-sm-6">
+                           <a class="btn btn-outline-success" href="/home/">Salir</a>
                         </div>
                     </div>
                 </div>

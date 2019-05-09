@@ -1,5 +1,6 @@
 .container-fluid {
-    background-color: rgb(126, 123, 123);
+    width: 100%;
+    background-color: rgb(207, 43, 43);
 }
 
 agm-map{
