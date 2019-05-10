@@ -9,6 +9,7 @@ import * as firebase from 'firebase/app';
 })
 export class AuthService {
   user: User;
+    public users:any ='';
   
   constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
@@ -40,6 +41,10 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
+  }
+  getUsers(): string{
+      this.users=JSON.parse(localStorage.getItem('user'));
+      return this.users['displayName'];
   }
   async googleLogin() {
     try {

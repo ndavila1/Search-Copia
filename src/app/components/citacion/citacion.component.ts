@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from './../../services/firebase.service';
 import { EstructuraCrud } from 'src/app/modelos/estructura-crud';
 import { Convocatoria } from '../../modelos/convocatoria.model';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-citacion',
   templateUrl: './citacion.component.html',
@@ -10,7 +11,12 @@ import { Convocatoria } from '../../modelos/convocatoria.model';
 export class CitacionComponent implements OnInit {
   convocatorias: any[] = [];
   convocatoriaTemp: Convocatoria = new Convocatoria();
-  constructor(private servicioFirebase: FirebaseService) { 
+  usuario : string='';
+  constructor(private servicioFirebase: FirebaseService,public afAuth: AuthService) {
+
+    this.usuario = this.afAuth.getUsers();
+    this.servicioFirebase.iniciarServicio('Convocatorias');
+
     this.servicioFirebase.iniciarServicio('Convocatorias');
   }
 
