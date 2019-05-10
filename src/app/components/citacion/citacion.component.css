@@ -1,0 +1,70 @@
+form{
+    font-family: 'Roboto', sans-serif;
+}
+.form-horizontal .header{
+    background: #17da21;
+    padding: 60px 25px;
+    font-size: 30px;
+    
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 3px 3px 0 0;
+}
+.form-horizontal .heading{
+    font-size: 16px;
+    color: #17da38;
+    margin: 5px 10 5px 0;
+    text-transform: capitalize;
+}
+.form-horizontal .form-content{
+    padding: 44px;
+    background: #fff;
+}
+.form-horizontal .form-control{
+    padding: 16px 16px 12px 39px;
+    height: 50px;
+    font-size: 14px;
+    color: #2b2a2a;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 5px;
+}
+.form-horizontal .form-control:focus{
+    border-color: #17da52;
+    box-shadow: none;
+}
+.form-horizontal .control-label{
+    font-size: 17px;
+    color: #ccc;
+    position: absolute;
+    top: 5px;
+    left: 27px;
+    text-align: center;
+}
+.form-horizontal textarea.form-control{
+    resize: vertical;
+    height: 50px;
+}
+.form-horizontal {
+    font-size: 18px ;
+    color: #020101;
+    text-align: center;
+    
+    float: right;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 0;
+    padding: 10px 25px;
+    transition: all 0.5s ease 0s;
+}
+.form-horizontal {
+    background: #fff;
+    border-color: #17da52;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.table{
+	width: 100%;
+}

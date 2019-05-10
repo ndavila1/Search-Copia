@@ -4,6 +4,7 @@ import { LoginComponent } from './components/users/login/login.component';
 import { RegistroComponent } from './components/users/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
+import { CitacionComponent } from './components/citacion/citacion.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'home/citacion',
+    component: CitacionComponent
   },
   {
     path: 'home/convocatoria',
