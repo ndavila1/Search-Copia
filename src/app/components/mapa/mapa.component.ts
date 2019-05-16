@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PuntoMapa } from 'src/app/modelos/punto-mapa.model';
-import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-mapa',
