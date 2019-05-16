@@ -1,5 +1,6 @@
 export interface Mensaje {
-    nombre: string;
+    nombreLogueado: string;
+    nombreReceptor: string;
     mensaje: string;
     fecha?: number;
     uidLogueado?: string;
