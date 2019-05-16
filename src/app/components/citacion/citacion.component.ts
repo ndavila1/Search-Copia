@@ -23,7 +23,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
   
   constructor(private servicioFirebaseCon: ConvocatoriaCrudService,private servicioFirebaseCi: CitaCrudService,public afAuth: AuthService) {
     this.usuario = this.afAuth.getUsers();
-    this.user = this.afAuth.getUser;
+    this.user = this.afAuth;
     
   }
 
@@ -92,7 +92,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
   }
 */
   crear(): void {
-    this.citasTemp.formulario.controls['UID'].setValue(this.user.uid);
+    this.citasTemp.formulario.controls['UID'].setValue(this.user.user.uid);
     this.citasTemp.formulario.controls['idConvocatoria'].setValue(this.idConv);
     console.log(this.servicioFirebaseCi.create(this.citasTemp.formulario.value));
     this.citasTemp.formulario.reset();
@@ -105,7 +105,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
     this.citasTemp = new Cita();
     this.estado = 0;
   }
-
+  
   eliminar(evento: any, id: string): void {
     if (evento) {
       console.log(this.servicioFirebaseCi.delete(id));
@@ -117,6 +117,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
       let data = a.payload.data() as any;
       this.citasTemp.formulario.setValue(data);
       this.estado = 1;
+      this.citasTemp.id= a.payload.id;
     });
   }
 
