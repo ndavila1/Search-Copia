@@ -3,20 +3,24 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import * as firebase from 'firebase/app';
-import { PresenceService } from './presence.service';
-import { FirebaseService } from './firebase.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { usuario } from "./../modelos/usuario";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public user: User;
-  public users:any ='';
-  
-  constructor(public afAuth: AngularFireAuth, public router: Router) {
-    
+  user: User;
+  public users: any = '';
+  public itemsCollection: AngularFirestoreCollection<usuario>;
+  public usuarios: usuario[] = [];
+
+  constructor(private afs: AngularFirestore,
+    public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
+        this.itemsCollection = this.afs.collection<usuario>('usuario');
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
       } else {
@@ -45,10 +49,9 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
-
-  getUsers(): string{
-      this.users=JSON.parse(localStorage.getItem('user'));
-      return this.users['displayName'];
+  getUsers(): string {
+    this.users = JSON.parse(localStorage.getItem('user'));
+    return this.users['displayName'];
   }
 
   async googleLogin() {
@@ -56,13 +59,39 @@ export class AuthService {
       await this.afAuth.auth.signInWithPopup(
         new firebase.auth.GoogleAuthProvider()
       );
+      let Usuario: usuario = {
+        nombre: this.user.displayName,
+        correo: this.user.email,
+        foto: this.user.photoURL,
+        uid: this.user.uid
+      }
+      this.itemsCollection.add(Usuario);
       this.router.navigate(['home']);
     } catch (e) {
       alert('Error!' + e.message);
     }
   }
 
-  getUser(){
-    return this.user;
+  getUser() {
+    let Usuario: usuario = {
+      nombre: this.user.displayName,
+      correo: this.user.email,
+      foto: this.user.photoURL,
+      uid: this.user.uid
+    }
+    return Usuario;
   }
+  cargarUsuarios() {
+
+    return this.itemsCollection.valueChanges().pipe
+      (map((usu: usuario[]) => {
+        console.log(usu);
+        this.usuarios = [];
+        for (let usuario of usu) {
+          this.usuarios.unshift(usuario);
+        }
+
+        return this.usuarios;
+      }))
+}
 }
