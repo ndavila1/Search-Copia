@@ -19,6 +19,8 @@ import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.co
 import { CitacionComponent } from './components/citacion/citacion.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NavComponent } from './components/nav/nav.component';
     ConvocatoriaComponent,
     CitacionComponent,
     MapaComponent,
-    NavComponent
+    NavComponent,
+    ListaUsuariosComponent,
+    ChatComponent
   ],
   imports: [
     SweetAlert2Module.forRoot({
@@ -46,7 +50,7 @@ import { NavComponent } from './components/nav/nav.component';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM'
+      apiKey: ''
       //En caso de no servir AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM
     })
   ],

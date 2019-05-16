@@ -5,6 +5,8 @@ import { RegistroComponent } from './components/users/registro/registro.componen
 import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
 import { CitacionComponent } from './components/citacion/citacion.component';
+import { ChatComponent } from "./components/chat/chat.component";
+import { ListaUsuariosComponent } from "./components/lista-usuarios/lista-usuarios.component";
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
   {
     path: 'home/convocatoria',
     component: ConvocatoriaComponent
+  },
+  {
+    path: 'home/ListaUsuariosComponent',
+    component: ListaUsuariosComponent
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
-import { FirebaseService } from 'src/app/services/firebase.service';
+import { PresenceService } from 'src/app/services/presence.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
@@ -10,32 +11,14 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class HomeComponent implements OnInit {
 
   public usuario: any;
-  usuarios: any[] = [];
 
-  constructor(public afAuth: AuthService, public firebase: FirebaseService) {
-    this.firebase.iniciarServicio('Usuarios', true);
+  constructor(public afAuth: AuthService) {
+    
     this.usuario = JSON.parse(localStorage.getItem('user'));
+    
    }
 
   ngOnInit() {
-    this.guardarUsuario();
-  }
-
-  guardarUsuario(){
-    this.firebase.listar().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        const usuarion = data[i];
-        this.usuarios.push(usuarion);
-        if (usuarion['uid'] === this.usuario['uid']) {
-          this.usuario['UID'] = usuarion['id'];
-          return;
-        }
-      }
-      this.firebase.create(this.usuario).then(response => {
-        this.usuario['UID'] = response.id;
-        this.firebase.update(response.id, this.usuario);
-      });
-    });
   }
 
 }
