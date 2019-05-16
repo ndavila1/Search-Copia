@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ChatService } from "./../../services/chat.service";
 
 import { AuthService } from './../../services/auth.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -16,16 +17,15 @@ export class ListaUsuariosComponent implements OnInit {
   user: any;
 
 
-  constructor(
-    public router: Router,public _cs: ChatService,
-    private authService: AuthService) {
+  constructor(public router: Router,public _cs: ChatService,
+    public authService: AuthService, public servicioFirebase : UsuariosService ) {
 
    }
 
   ngOnInit() {
-   // this.listar();
+   this.listar();
   }
-/*
+
   listar(): void {
     this.servicioFirebase.listar().subscribe(data => {
       this.usuarios = data.map(elemento => {
@@ -40,5 +40,5 @@ export class ListaUsuariosComponent implements OnInit {
     this._cs.setUsuarioReceptor(usuario);
     this.router.navigate(['home/chat']);
   }
-*/
+
 }
