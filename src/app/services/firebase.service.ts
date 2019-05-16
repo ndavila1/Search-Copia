@@ -32,6 +32,7 @@ export class FirebaseService {
         })
       ));
     }
+    this.orders.subscribe();
   }
   
   public listar(): Observable<any[]> {
@@ -50,7 +51,7 @@ export class FirebaseService {
     return this.objetos.doc(id).delete();
   }
 
-  public create(objeto: string): Promise<any> {
+  public create(objeto: any): Promise<any> {
     return this.objetos.add(objeto);
   }
 }

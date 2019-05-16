@@ -3,29 +3,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import * as firebase from 'firebase/app';
+import { PresenceService } from './presence.service';
 import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user: User;
-    public users:any ='';
+  public user: User;
+  public users:any ='';
   
   constructor(public afAuth: AngularFireAuth, public router: Router) {
-    console.log(this.afAuth);
+    
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
-        
-        
       } else {
         localStorage.setItem('user', null);
       }
 
     });
   }
+
   async login(email: string, password: string) {
     try {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
@@ -45,10 +45,12 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
+
   getUsers(): string{
       this.users=JSON.parse(localStorage.getItem('user'));
       return this.users['displayName'];
   }
+
   async googleLogin() {
     try {
       await this.afAuth.auth.signInWithPopup(
