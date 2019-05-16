@@ -62,7 +62,7 @@ form{
 }
 .form-horizontal {
     background: #fff;
-    border-color: #17da52;
+    border-color: #00D3D3;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .table{
@@ -74,6 +74,6 @@ form{
     margin: 0 auto;
     text-align: end;
     text-transform: uppercase;
-    background: rgb(35, 177, 78);
+    background-color: #00D3D3;
     color: rgba(0, 0, 0, 0.932);
 }

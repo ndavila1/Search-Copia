@@ -104,6 +104,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
     console.log(this.servicioFirebaseCi.update(this.citasTemp.id, this.citasTemp.formulario.value));
     this.citasTemp = new Cita();
     this.estado = 0;
+    this.citasTemp.formulario.reset();
   }
   
   eliminar(evento: any, id: string): void {
