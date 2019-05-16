@@ -4,6 +4,8 @@ import { FirebaseService } from './../../services/firebase.service';
 import { Router } from '@angular/router';
 import { ChatService } from "./../../services/chat.service";
 
+import { AuthService } from './../../services/auth.service';
+
 @Component({
   selector: 'app-lista-usuarios',
   templateUrl: './lista-usuarios.component.html',
@@ -12,9 +14,12 @@ import { ChatService } from "./../../services/chat.service";
 export class ListaUsuariosComponent implements OnInit {
 
   public usuarios: usuario[] = [];
+  user: any;
+
 
   constructor(private servicioFirebase: FirebaseService,
-    public router: Router,public _cs: ChatService) {
+    public router: Router,public _cs: ChatService,
+    private authService: AuthService) {
     //this.afAuth.cargarUsuarios().subscribe(data => {
       //this.usuarios = data.map(elemento => {
         //return {
@@ -22,7 +27,8 @@ export class ListaUsuariosComponent implements OnInit {
         //}
       //});
     //});}
-
+      
+    this.user = this.authService;
     this.servicioFirebase.iniciarServicio('usuario');
 
     

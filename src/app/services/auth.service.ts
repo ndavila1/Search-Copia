@@ -66,6 +66,7 @@ export class AuthService {
         uid: this.user.uid
       }
       this.itemsCollection.add(Usuario);
+
       this.router.navigate(['home']);
     } catch (e) {
       alert('Error!' + e.message);

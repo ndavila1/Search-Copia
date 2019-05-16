@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConvocatoriaComponent } from './components/convocatoria/convocatoria.component';
 import { CitacionComponent } from './components/citacion/citacion.component';
 import { ChatComponent } from "./components/chat/chat.component";
+import { ListaUsuariosComponent } from "./components/lista-usuarios/lista-usuarios.component";
 
 const routes: Routes = [
   {
@@ -29,8 +30,8 @@ const routes: Routes = [
     component: ConvocatoriaComponent
   },
   {
-    path: 'chat',
-    component: ChatComponent
+    path: 'home/ListaUsuariosComponent',
+    component: ListaUsuariosComponent
   }
 ];
 
