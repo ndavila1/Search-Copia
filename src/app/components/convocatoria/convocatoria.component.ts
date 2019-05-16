@@ -16,6 +16,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   convocatorias: any[] = [];
   convocatoriaTemp: Convocatoria = new Convocatoria();
   user: any;
+  
   constructor(private authService: AuthService, private servicioFirebase: ConvocatoriaCrudService) {
     this.user = this.authService;
   }
@@ -94,6 +95,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   buscar(id: string): void {
     this.servicioFirebase.buscar(id).subscribe(a => {
       let data = a.payload.data() as any;
+      this.convocatoriaTemp.id = a.payload.id;
       this.convocatoriaTemp.formulario.setValue(data);
       this.estado = 1;
     });

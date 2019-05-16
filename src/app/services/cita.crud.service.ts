@@ -11,7 +11,7 @@ export class CitaCrudService {
   private objetos: AngularFirestoreCollection<any>;
   private orders: Observable<any[]>;
 
-  constructor(private readonly afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore) {
     this.objetos = this.afs.collection<any>('Citas');
     this.orders = this.objetos.snapshotChanges().pipe(map(
       actions => actions.map(a => {
