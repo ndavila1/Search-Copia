@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from './../../services/firebase.service';
 import { EstructuraCrud } from 'src/app/modelos/estructura-crud';
 import { Convocatoria } from './../../modelos/convocatoria.model';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { ConvocatoriaCrudService } from 'src/app/services/convocatoria.crud.service';
 
 @Component({
   selector: 'app-convocatoria',
@@ -16,8 +16,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   convocatorias: any[] = [];
   convocatoriaTemp: Convocatoria = new Convocatoria();
   user: any;
-  constructor(private authService: AuthService, private servicioFirebase: FirebaseService) {
-    this.servicioFirebase.iniciarServicio('Convocatorias');
+  constructor(private authService: AuthService, private servicioFirebase: ConvocatoriaCrudService) {
     this.user = this.authService;
   }
 
