@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PuntoMapa } from 'src/app/modelos/punto-mapa.model';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-mapa',
@@ -10,22 +11,16 @@ export class MapaComponent implements OnInit {
 
   latitud: number;
   longitud: number;
-  marcaLocalizacion: PuntoMapa;
+  marcasLocalizacion: PuntoMapa[] = [];
 
-  constructor() { 
+  constructor() {
     navigator.geolocation.getCurrentPosition(e => {
       this.latitud = e.coords.latitude;
       this.longitud = e.coords.longitude;
-
-      this.marcaLocalizacion = {
-        latitud: this.latitud,
-        longitud: this.longitud,
-        etiqueta: "YO",
-        movible: false
-      }
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
 }

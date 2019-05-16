@@ -1,8 +1,12 @@
+.container-fluid{
+    height: 97vh;
+    background-color: #00D3D3;
+}
 form{
     font-family: 'Roboto', sans-serif;
 }
 .form-horizontal .header{
-    background: #17da21;
+    background: #0097D3;
     padding: 60px 25px;
     font-size: 30px;
     color: #fff;
@@ -12,7 +16,7 @@ form{
 }
 .form-horizontal .heading{
     font-size: 16px;
-    color: #17da38;
+    color: #0097D3;
     margin: 5px 10 5px 0;
     text-transform: capitalize;
 }
@@ -32,7 +36,7 @@ form{
     margin-bottom: 5px;
 }
 .form-horizontal .form-control:focus{
-    border-color: #17da52;
+    border-color: #00D3D3;
     box-shadow: none;
 }
 .form-horizontal .control-label{
@@ -59,7 +63,7 @@ form{
 }
 .form-horizontal {
     background: #fff;
-    border-color: #17da52;
+    border-color: #0097D3;
 }
 .table{
 	width: 100%;

@@ -7,7 +7,17 @@
         
         <li><a href="home/citacion">Mis citas</a></li>
         <li><a href="/home/convocatoria">Mis convocatorias</a></li>
-        <li><a href="" (click)="cerrarSesionGoogle()">Logout</a></li>
+        <li><a href=""
+          [swal]="{ 
+            title: '¿Seguro que desea cerrar la sesión?',
+            type: 'warning',
+            showCancelButton: true,
+            customClass: {
+                confirmButton: 'btn btn-primary mr-2',
+                cancelButton: 'btn btn-outline-danger'
+            },
+            confirmButtonText: 'Si, Estoy seguro!'
+        }" (confirm)="cerrarSesionGoogle()">Logout</a></li>
       </ul>
     </nav>
   </div>

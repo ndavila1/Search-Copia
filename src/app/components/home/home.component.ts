@@ -8,14 +8,12 @@ import { AuthService } from './../../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  public usuario:string ='';
-  constructor(public afAuth: AuthService) {
+  public usuario: any;
 
-    this.usuario = this.afAuth.getUsers();
-    //this.usuario=localStorage.getItem('user');
+  constructor(public afAuth: AuthService) {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

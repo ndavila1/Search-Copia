@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { usuario } from "./../modelos/usuario";
 import { map } from 'rxjs/operators';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,6 @@ export class AuthService {
         this.itemsCollection = this.afs.collection<usuario>('usuario');
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
-
       } else {
         localStorage.setItem('user', null);
       }
@@ -66,7 +66,6 @@ export class AuthService {
       }
       this.itemsCollection.add(Usuario);
       this.router.navigate(['home']);
-
     } catch (e) {
       alert('Error!' + e.message);
     }

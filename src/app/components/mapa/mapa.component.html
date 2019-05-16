@@ -1,7 +1,16 @@
 <div class="container-fluid">
   <agm-map [latitude]="this.latitud" [longitude]="this.longitud">
-    <agm-marker [latitude]="this.marcaLocalizacion.latitud" [longitude]="this.marcaLocalizacion.longitud"
-      [label]="this.marcaLocalizacion.etiqueta" [markerDraggable]="this.marcaLocalizacion.movible">
-    </agm-marker>
+    <agm-marker 
+      *ngFor="let m of marcasLocalizacion; let i = index"
+      [latitude]="m.latitud"
+      [longitude]="m.longitud"
+      [label]="m.etiqueta"
+      [markerDraggable]="m.movible">
+      
+    <agm-info-window>
+      <strong>InfoWindow content</strong>
+    </agm-info-window>
+    
+  </agm-marker>
   </agm-map>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from './../../services/firebase.service';
 import { EstructuraCrud } from 'src/app/modelos/estructura-crud';
 import { Convocatoria } from './../../modelos/convocatoria.model';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-convocatoria',
@@ -13,13 +15,19 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   estado = 0;
   convocatorias: any[] = [];
   convocatoriaTemp: Convocatoria = new Convocatoria();
+  user: any;
 
-  constructor(private servicioFirebase: FirebaseService) { 
+  constructor(private authService: AuthService, private servicioFirebase: FirebaseService) {
     this.servicioFirebase.iniciarServicio('Convocatorias');
+    this.user = this.authService;
   }
 
   ngOnInit() {
     this.listar();
+  }
+
+  validarConvocatoriasVistas(convocatoria: Convocatoria): boolean {
+    return convocatoria.UID === this.user.user.uid;
   }
 
   listar(): void {
@@ -33,14 +41,42 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   }
 
   guardar(): void {
-    if(this.estado == 0){
-      this.crear();
-    }else{
-      this.modificar();
+    if (this.validarFormulario()) {
+      if (this.estado == 0) {
+        this.crear();
+      } else {
+        this.modificar();
+      }
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Debe llenar los campos para poder guardar.',
+        type: 'error',
+        confirmButtonText: 'OK'
+      })
     }
   }
 
+  private validarFormulario(): boolean {
+    return this.convocatoriaTemp.formulario.controls['fechaInicio'].value !== ''
+    && this.convocatoriaTemp.formulario.controls['fechaInicio'].value !== null
+    && this.convocatoriaTemp.formulario.controls['fechaInicio'].value !== undefined
+    && this.convocatoriaTemp.formulario.controls['fechaFin'].value !== ''
+    && this.convocatoriaTemp.formulario.controls['fechaFin'].value !== null
+    && this.convocatoriaTemp.formulario.controls['fechaFin'].value !== undefined
+    && this.convocatoriaTemp.formulario.controls['profesion'].value !== ''
+    && this.convocatoriaTemp.formulario.controls['profesion'].value !== null
+    && this.convocatoriaTemp.formulario.controls['profesion'].value !== undefined
+    && this.convocatoriaTemp.formulario.controls['descripcion'].value !== ''
+    && this.convocatoriaTemp.formulario.controls['descripcion'].value !== null
+    && this.convocatoriaTemp.formulario.controls['descripcion'].value !== undefined
+    && this.convocatoriaTemp.formulario.controls['habilidades'].value !== ''
+    && this.convocatoriaTemp.formulario.controls['habilidades'].value !== null
+    && this.convocatoriaTemp.formulario.controls['habilidades'].value !== undefined
+  }
+
   crear(): void {
+    this.convocatoriaTemp.formulario.controls['UID'].setValue(this.user.user.uid);
     console.log(this.servicioFirebase.create(this.convocatoriaTemp.formulario.value));
     this.convocatoriaTemp.formulario.reset();
   }
@@ -52,7 +88,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   }
 
   eliminar(evento: any, id: string): void {
-    if(evento){
+    if (evento) {
       console.log(this.servicioFirebase.delete(id));
     }
   }

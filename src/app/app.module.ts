@@ -50,7 +50,7 @@ import { ChatComponent } from './components/chat/chat.component';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM'
+      apiKey: ''
       //En caso de no servir AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM
     })
   ],
