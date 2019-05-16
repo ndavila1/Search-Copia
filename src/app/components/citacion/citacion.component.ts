@@ -62,13 +62,13 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
 
   guardar(): void {
     console.log(this.estado);
-    //if (this.validarFormulario()) {
+    if (this.validarFormulario()) {
       if (this.estado == 0) {
         this.crear();
       } else {
         this.modificar();
       }
-    /*} else {
+    } else {
       Swal.fire({
         title: 'Error!',
         text: 'Debe llenar los campos para poder guardar.',
@@ -76,9 +76,9 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
         confirmButtonText: 'OK'
       })
     }
-    */
+    
   }
-/*
+
   private validarFormulario(): boolean {
     return this.citasTemp.formulario.controls['fechaCitacion'].value !== ''
     && this.citasTemp.formulario.controls['fechaCitacion'].value !== null
@@ -90,7 +90,7 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
     && this.citasTemp.formulario.controls['descripcion'].value !== null
     && this.citasTemp.formulario.controls['descripcion'].value !== undefined
   }
-*/
+
   crear(): void {
     this.citasTemp.formulario.controls['UID'].setValue(this.user.user.uid);
     this.citasTemp.formulario.controls['idConvocatoria'].setValue(this.idConv);
