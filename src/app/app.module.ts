@@ -46,7 +46,7 @@ import { NavComponent } from './components/nav/nav.component';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM'
+      apiKey: ''
       //En caso de no servir AIzaSyC2ONZWG9gtFWQFfqrFCWdI1m3XBL5yIJM
     })
   ],

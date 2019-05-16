@@ -12,12 +12,13 @@ export class AuthService {
   user: User;
     public users:any ='';
   
-  constructor(public afAuth: AngularFireAuth, public router: Router, public firebase: FirebaseService) {
-    this.firebase.iniciarServicio('Usuarios');
+  constructor(public afAuth: AngularFireAuth, public router: Router) {
+    console.log(this.afAuth);
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        
         
       } else {
         localStorage.setItem('user', null);

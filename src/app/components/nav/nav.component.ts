@@ -9,12 +9,6 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class NavComponent implements OnInit {
 
-  @Input()
-  usuarioConectado: any;
-
-  @Input()
-  firebase: FirebaseService;
-
   constructor(private authService: AuthService) {
   }
 
@@ -22,7 +16,6 @@ export class NavComponent implements OnInit {
   }
 
   cerrarSesionGoogle(){
-    console.log(this.firebase.delete(this.usuarioConectado['UID']));
     this.authService.logout();
   }
 }
