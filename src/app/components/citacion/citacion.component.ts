@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseService } from './../../services/firebase.service';
 import { EstructuraCrud } from 'src/app/modelos/estructura-crud';
 import { Convocatoria } from '../../modelos/convocatoria.model';
 import { Cita } from '../../modelos/cita.model';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { CitaCrudService } from '../../services/cita.crud.service';
+import { ConvocatoriaCrudService } from '../../services/convocatoria.crud.service';
 @Component({
   selector: 'app-citacion',
   templateUrl: './citacion.component.html',
@@ -20,17 +21,15 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
   idConv: string='';
   user: any;
   
-  constructor(private servicioFirebaseCon: FirebaseService,private servicioFirebaseCi: FirebaseService,public afAuth: AuthService) {
-
+  constructor(private servicioFirebaseCon: ConvocatoriaCrudService,private servicioFirebaseCi: CitaCrudService,public afAuth: AuthService) {
     this.usuario = this.afAuth.getUsers();
-    this.user = this.afAuth;
-    this.servicioFirebaseCi.iniciarServicio('Citas');
-    this.servicioFirebaseCon.iniciarServicio('Convocatorias');
+    this.user = this.afAuth.getUser;
+    
   }
 
   ngOnInit() {
-    this.listar();
-    this.listarCitas();
+   this.listar();
+   this.listarCitas();
   }
   listar(): void {
     
@@ -93,14 +92,14 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
   }
 */
   crear(): void {
-    this.citasTemp.formulario.controls['UID'].setValue(this.user.user.uid);
+    this.citasTemp.formulario.controls['UID'].setValue(this.user.uid);
     this.citasTemp.formulario.controls['idConvocatoria'].setValue(this.idConv);
     console.log(this.servicioFirebaseCi.create(this.citasTemp.formulario.value));
     this.citasTemp.formulario.reset();
   }
 
   modificar(): void {
-    console.log(this.citasTemp);
+    console.log(this.citasTemp.id);
     //this.citasTemp.formulario.controls['UID'].setValue(this.user.user.uid);
     console.log(this.servicioFirebaseCi.update(this.citasTemp.id, this.citasTemp.formulario.value));
     this.citasTemp = new Cita();

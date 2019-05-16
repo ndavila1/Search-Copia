@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FirebaseService } from 'src/app/services/firebase.service';
+//import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-nav',

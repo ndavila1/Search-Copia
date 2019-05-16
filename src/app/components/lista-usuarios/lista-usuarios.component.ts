@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { usuario } from "./../../modelos/usuario";
-import { FirebaseService } from './../../services/firebase.service';
 import { Router } from '@angular/router';
 import { ChatService } from "./../../services/chat.service";
 
@@ -17,27 +16,16 @@ export class ListaUsuariosComponent implements OnInit {
   user: any;
 
 
-  constructor(private servicioFirebase: FirebaseService,
+  constructor(
     public router: Router,public _cs: ChatService,
     private authService: AuthService) {
-    //this.afAuth.cargarUsuarios().subscribe(data => {
-      //this.usuarios = data.map(elemento => {
-        //return {
-         // ...elemento as usuario
-        //}
-      //});
-    //});}
-      
-    this.user = this.authService;
-    this.servicioFirebase.iniciarServicio('usuario');
 
-    
    }
 
   ngOnInit() {
-    this.listar();
+   // this.listar();
   }
-
+/*
   listar(): void {
     this.servicioFirebase.listar().subscribe(data => {
       this.usuarios = data.map(elemento => {
@@ -52,5 +40,5 @@ export class ListaUsuariosComponent implements OnInit {
     this._cs.setUsuarioReceptor(usuario);
     this.router.navigate(['chat']);
   }
-
+*/
 }
