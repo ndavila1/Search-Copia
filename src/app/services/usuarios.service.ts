@@ -9,13 +9,14 @@ import { map } from 'rxjs/operators';
 export class UsuariosService {
   private objetos: AngularFirestoreCollection<any>;
   private orders: Observable<any[]>;
+  private daryl :string;
   constructor(private afs: AngularFirestore) {
     this.objetos = this.afs.collection<any>('Citas');
     this.orders = this.objetos.snapshotChanges().pipe(map(
       actions => actions.map(a => {
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
-        return {id, ...data};
+        return {id, ...data };
       })
     ));
    }
