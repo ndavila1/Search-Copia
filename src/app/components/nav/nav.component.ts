@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,11 +9,20 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  @Input()
+  usuarioConectado: any;
+
+  @Input()
+  firebase: FirebaseService;
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
   }
+
   cerrarSesionGoogle(){
+    console.log(this.firebase.delete(this.usuarioConectado['UID']));
     this.authService.logout();
   }
 }

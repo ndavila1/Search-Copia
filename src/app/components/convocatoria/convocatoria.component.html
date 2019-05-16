@@ -21,7 +21,6 @@
                             <input class="form-control" id="fechaFin" type="date" formControlName="fechaFin" required>
                         </div>
                     </div>
-                    <input id="UID" type="hidden" hidden>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <input class="form-control" id="profesion" type="text" placeholder="Profesión"
@@ -65,7 +64,6 @@
                     <tbody *ngFor="let convocatoria of convocatorias; let i = index">
                         <tr *ngIf="this.validarConvocatoriasVistas(convocatoria);">
                             <th scope="row">{{i+1}}</th>
-                            <td id='{{convocatoria.id}}' hidden>idConvocatoria</td>
                             <td>{{convocatoria.fechaInicio}}</td>
                             <td>{{convocatoria.fechaFin}}</td>
                             <td>{{convocatoria.profesion}}</td>

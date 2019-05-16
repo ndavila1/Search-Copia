@@ -77,7 +77,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
 
   crear(): void {
     this.convocatoriaTemp.formulario.controls['UID'].setValue(this.user.user.uid);
-    console.log(this.convocatoriaTemp.formulario.value);
+    console.log(this.servicioFirebase.create(this.convocatoriaTemp.formulario.value));
     this.convocatoriaTemp.formulario.reset();
   }
 

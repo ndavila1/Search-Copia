@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import * as firebase from 'firebase/app';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthService {
   user: User;
     public users:any ='';
   
-  constructor(public afAuth: AngularFireAuth, public router: Router) {
+  constructor(public afAuth: AngularFireAuth, public router: Router, public firebase: FirebaseService) {
+    this.firebase.iniciarServicio('Usuarios');
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
@@ -52,7 +54,6 @@ export class AuthService {
         new firebase.auth.GoogleAuthProvider()
       );
       this.router.navigate(['home']);
-      
     } catch (e) {
       alert('Error!' + e.message);
     }
