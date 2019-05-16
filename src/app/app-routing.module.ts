@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'home/ListaUsuariosComponent',
     component: ListaUsuariosComponent
+  },
+  {
+    path: 'home/chat',
+    component: ChatComponent
   }
 ];
 

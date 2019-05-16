@@ -3,10 +3,10 @@
 
 <div class="app-mensajes" id="app-mensajes">
 
-  <div *ngFor="let chat of _cs.chats" [ngClass]="{'text-right':usuLogueado.nombre 
-  == chat.nombre}">
-    <span class="badge" [ngClass]="{'badge-primary':usuLogueado.uid == chat.uidLogueado,
-    'badge-danger':usuLogueado.uid != chat.uidLogueado}">{{chat.nombre}}</span>
+  <div *ngFor="let chat of _cs.chats" [ngClass]="{'text-right':usuario.displayName 
+  == chat.nombreLogueado}">
+    <span class="badge" [ngClass]="{'badge-primary':usuario.uid == chat.uidLogueado,
+    'badge-danger':usuario.uid != chat.uidLogueado}">{{chat.nombreLogueado}}</span>
     <p>
       {{chat.mensaje}}
     </p>
@@ -21,4 +21,4 @@
 </div>-->
 
 <input type="text" name="mensaje" [(ngModel)]="mensaje" class="form-control" (keyup.enter)="enviar_mensaje()"
-  placeholder="Emviar mensaje">
+  placeholder="Enviar mensaje">

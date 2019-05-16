@@ -50,7 +50,7 @@ export class ListaUsuariosComponent implements OnInit {
 
   iniciarChat(usuario:usuario):void{
     this._cs.setUsuarioReceptor(usuario);
-    this.router.navigate(['chat']);
+    this.router.navigate(['home/chat']);
   }
 
 }

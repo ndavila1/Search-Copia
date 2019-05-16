@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { usuario } from './../../modelos/usuario';
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from "./../../services/chat.service";
@@ -10,12 +11,14 @@ import { ChatService } from "./../../services/chat.service";
 export class ChatComponent implements OnInit {
   mensaje: string = "";
   elemento: any;
+  public usuario: any;
   public usuLogueado: usuario = {};
   public usuReceptor: usuario = {};
-  constructor(public _cs: ChatService) { 
+  constructor(public _cs: ChatService,public afAuth: AuthService) { 
 
     this.usuLogueado=this._cs.getUsuarioL();
     this.usuReceptor=this._cs.getUsuarioR();
+    this.usuario = JSON.parse(localStorage.getItem('user'));
 
     this._cs.cargarMensajes().subscribe(
       () => {
@@ -30,6 +33,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.elemento = document.getElementById('app-mensajes');
+    
   }
   enviar_mensaje() {
     console.log(this.mensaje);
