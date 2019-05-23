@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(public afAuth: AuthService) {
     
     this.usuario = JSON.parse(localStorage.getItem('user'));
-    
    }
 
   ngOnInit() {
