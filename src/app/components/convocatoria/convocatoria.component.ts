@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EstructuraCrud } from 'src/app/modelos/estructura-crud';
 import { Convocatoria } from './../../modelos/convocatoria.model';
-import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { ConvocatoriaCrudService } from 'src/app/services/convocatoria.crud.service';
 
@@ -17,8 +16,8 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   convocatoriaTemp: Convocatoria = new Convocatoria();
   user: any;
   
-  constructor(private authService: AuthService, private servicioFirebase: ConvocatoriaCrudService) {
-    this.user = this.authService;
+  constructor(private servicioFirebase: ConvocatoriaCrudService) {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit() {
@@ -26,7 +25,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   }
 
   validarConvocatoriasVistas(convocatoria: Convocatoria): boolean {
-    return convocatoria.UID === this.user.user.uid;
+    return convocatoria.UID === this.user.uid;
   }
 
   listar(): void {
@@ -75,7 +74,7 @@ export class ConvocatoriaComponent implements OnInit, EstructuraCrud {
   }
 
   crear(): void {
-    this.convocatoriaTemp.formulario.controls['UID'].setValue(this.user.user.uid);
+    this.convocatoriaTemp.formulario.controls['UID'].setValue(this.user.uid);
     console.log(this.servicioFirebase.create(this.convocatoriaTemp.formulario.value));
     this.convocatoriaTemp.formulario.reset();
   }

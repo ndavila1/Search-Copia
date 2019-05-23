@@ -65,7 +65,15 @@ export class AuthService {
         foto: this.user.photoURL,
         uid: this.user.uid
       }
-      this.itemsCollection.add(Usuario);
+      await this.itemsCollection.get().subscribe(res => {
+        for (let i = 0; i < res.size; i++) {
+          const element: usuario = res[i];
+          if (element.uid === Usuario.uid) {
+            return;
+          }
+        }
+        this.itemsCollection.add(Usuario);
+      })
 
       this.router.navigate(['home']);
     } catch (e) {
