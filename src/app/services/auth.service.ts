@@ -16,6 +16,7 @@ export class AuthService {
   public users: any = '';
   public itemsCollection: AngularFirestoreCollection<usuario>;
   public usuarios: usuario[] = [];
+  public valor:any;
 
   constructor(private afs: AngularFirestore,
     public afAuth: AngularFireAuth, public router: Router) {
