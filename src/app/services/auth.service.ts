@@ -16,7 +16,7 @@ export class AuthService {
   public users: any = '';
   public itemsCollection: AngularFirestoreCollection<usuario>;
   public usuarios: usuario[] = [];
-  public valor:any;
+  public valor: any;
 
   constructor(private afs: AngularFirestore,
     public afAuth: AngularFireAuth, public router: Router) {
@@ -43,6 +43,14 @@ export class AuthService {
 
   async logout() {
     await this.afAuth.auth.signOut();
+    await this.itemsCollection.get().forEach(documentos => {
+      documentos.docs.map(elemento => {
+        if (elemento.data().uid === this.user.uid) {
+          this.itemsCollection.doc(elemento.id).delete();
+          return;
+        }
+      });
+    });
     localStorage.removeItem('user');
     this.router.navigate(['/']);
   }
@@ -107,5 +115,5 @@ export class AuthService {
 
         return this.usuarios;
       }))
-}
+  }
 }
