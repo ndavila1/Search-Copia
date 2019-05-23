@@ -15,6 +15,7 @@ export class AuthService {
   public users: any = '';
   public itemsCollection: AngularFirestoreCollection<usuario>;
   public usuarios: usuario[] = [];
+  public valor:any;
 
   constructor(private afs: AngularFirestore,
     public afAuth: AngularFireAuth, public router: Router) {
@@ -65,6 +66,8 @@ export class AuthService {
         foto: this.user.photoURL,
         uid: this.user.uid
       }
+      this.valor=this.itemsCollection.doc('uid');
+      console.log(this.valor);
       this.itemsCollection.add(Usuario);
 
       this.router.navigate(['home']);
