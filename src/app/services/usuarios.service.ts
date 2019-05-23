@@ -11,7 +11,7 @@ export class UsuariosService {
   private orders: Observable<any[]>;
   private daryl :string;
   constructor(private afs: AngularFirestore) {
-    this.objetos = this.afs.collection<any>('Citas');
+    this.objetos = this.afs.collection<any>('usuario');
     this.orders = this.objetos.snapshotChanges().pipe(map(
       actions => actions.map(a => {
         const data = a.payload.doc.data() as any;

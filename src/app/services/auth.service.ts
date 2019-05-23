@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { usuario } from "./../modelos/usuario";
 import { map } from 'rxjs/operators';
+import { pipe } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -65,15 +66,18 @@ export class AuthService {
         foto: this.user.photoURL,
         uid: this.user.uid
       }
-      await this.itemsCollection.get().subscribe(res => {
-        for (let i = 0; i < res.size; i++) {
-          const element: usuario = res[i];
-          if (element.uid === Usuario.uid) {
+      let bool = false;
+      await this.itemsCollection.get().forEach(documentos => {
+        documentos.docs.map(elemento => {
+          if (elemento.data().uid === Usuario.uid) {
+            bool = true;
             return;
           }
-        }
+        });
+      });
+      if (!bool) {
         this.itemsCollection.add(Usuario);
-      })
+      }
 
       this.router.navigate(['home']);
     } catch (e) {
