@@ -16,6 +16,13 @@ export class MapaComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(e => {
       this.latitud = e.coords.latitude;
       this.longitud = e.coords.longitude;
+
+      this.marcasLocalizacion.push({
+        etiqueta: "YO",
+        latitud: this.latitud,
+        longitud: this.longitud,
+        movible: true
+      })
     });
   }
 
