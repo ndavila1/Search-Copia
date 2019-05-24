@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { usuario } from "./../modelos/usuario";
 import { map } from 'rxjs/operators';
+import { pipe } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
   public users: any = '';
   public itemsCollection: AngularFirestoreCollection<usuario>;
   public usuarios: usuario[] = [];
+  public valor: any;
 
   constructor(private afs: AngularFirestore,
     public afAuth: AngularFireAuth, public router: Router) {
@@ -47,6 +49,14 @@ export class AuthService {
 
   async logout() {
     await this.afAuth.auth.signOut();
+    await this.itemsCollection.get().forEach(documentos => {
+      documentos.docs.map(elemento => {
+        if (elemento.data().uid === this.user.uid) {
+          this.itemsCollection.doc(elemento.id).delete();
+          return;
+        }
+      });
+    });
     localStorage.removeItem('user');
     this.router.navigate(['/']);
   }
@@ -71,7 +81,18 @@ export class AuthService {
         foto: this.user.photoURL,
         uid: this.user.uid
       }
-      this.itemsCollection.add(Usuario);
+      let bool = false;
+      await this.itemsCollection.get().forEach(documentos => {
+        documentos.docs.map(elemento => {
+          if (elemento.data().uid === Usuario.uid) {
+            bool = true;
+            return;
+          }
+        });
+      });
+      if (!bool) {
+        this.itemsCollection.add(Usuario);
+      }
 
       this.router.navigate(['home']);
     } catch (e) {
@@ -100,5 +121,5 @@ export class AuthService {
 
         return this.usuarios;
       }))
-}
+  }
 }
