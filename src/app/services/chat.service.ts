@@ -26,8 +26,7 @@ export class ChatService {
     }
 
   cargarMensajes() {
-    this.itemsCollection = this.afs.collection<Mensaje>('chats',
-      ref => ref.orderBy('fecha', 'desc').limit(20));
+    this.itemsCollection = this.afs.collection<Mensaje>('chats', ref => ref.orderBy ('fecha','desc').limit(20));
 
     return this.itemsCollection.valueChanges().pipe
       (map((mensajes: Mensaje[]) => {
@@ -42,6 +41,7 @@ export class ChatService {
             //}
         }
 
+        console.log(this.chats);
         return this.chats;
       }))
   }
@@ -55,6 +55,7 @@ export class ChatService {
       uidLogueado:this.usuario.uid,
       uidReceptor:this.usuReceptor.uid
     }
+    console.log(mensaje.fecha)
     return this.itemsCollection.add(mensaje);
   }
 
