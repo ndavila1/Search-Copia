@@ -48,8 +48,8 @@ export class ChatService {
 
   agregarMensajes(text: string) {
     let mensaje: Mensaje = {
-      nombreLogueado: this.usuario.displayName,
-      nombreReceptor:this.usuReceptor.nombre,
+      nombreLogueado: this.usuario.email,
+      nombreReceptor:this.usuReceptor.email,
       mensaje: text,
       fecha: new Date().getTime(),
       uidLogueado:this.usuario.uid,
