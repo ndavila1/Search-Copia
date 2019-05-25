@@ -1,6 +1,6 @@
 export interface usuario {
     nombre?: string;
-    correo?: string;
+    email?: string;
     foto?: string;
     uid?: string;
 }
