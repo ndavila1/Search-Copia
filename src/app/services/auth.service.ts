@@ -30,11 +30,17 @@ export class AuthService {
 
     });
   }
-
+  registerUser(email: string, pass: string){
+    return new Promise((resolve, reject)=>{
+      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+      .then(user => resolve(user),
+     err =>reject(err));
+    });
+  }
   async login(email: string, password: string) {
     try {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      this.router.navigate(['nombre de la pagina que se debe mostrar']);
+      this.router.navigate(['/home']);
     } catch (e) {
       alert('Error!' + e.message);
     }
@@ -60,7 +66,7 @@ export class AuthService {
   }
   getUsers(): string {
     this.users = JSON.parse(localStorage.getItem('user'));
-    return this.users['displayName'];
+    return this.users['email'];
   }
 
   async googleLogin() {

@@ -5,6 +5,11 @@
 form{
     font-family: 'Roboto', sans-serif;
 }
+.container{
+    text-align: end;
+    text-transform: uppercase;
+    background: #00D3D3;
+}
 .form-horizontal .header{
     background: #0097D3;
     padding: 60px 25px;

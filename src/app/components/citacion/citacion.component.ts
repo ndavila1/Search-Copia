@@ -20,9 +20,10 @@ export class CitacionComponent implements OnInit, EstructuraCrud {
   usuario : string='';
   idConv: string='';
   user: any;
-  
+  usuarios : any;
   constructor(private servicioFirebaseCon: ConvocatoriaCrudService,private servicioFirebaseCi: CitaCrudService,public afAuth: AuthService) {
-    this.usuario = this.afAuth.getUsers();
+    this.usuarios = JSON.parse(localStorage.getItem('user'));
+    //this.usuario = this.afAuth.getUsers();
     this.user = this.afAuth;
     
   }

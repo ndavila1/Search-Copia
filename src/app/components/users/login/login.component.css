@@ -7,6 +7,7 @@ background-size: cover;
 background-repeat: no-repeat;
 height: 100vh;
 font-family: 'Numans', sans-serif;
+
 }
 
 .container{
@@ -15,13 +16,12 @@ align-content: center;
 }
 
 .card{
-height: 220px;
+height: 280px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
-
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
@@ -31,29 +31,45 @@ color: #FFC312;
 
 .social_icon{
 position: absolute;
-right: 170px;
-top: 45px;
+right: 10px;
+top: -50px;
 width: 100px;
 }
-
-.input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
-}
-
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
-}
-
-
 .links{
 color: white;
 }
 
 .links a{
 margin-left: 4px;
+}
+
+.btnSubmit{
+
+    width: 220%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0047cc;
+    right: 100px;
+}
+
+.login-form-1{
+    font-weight: 600;
+    color: #fff;
+    
+}
+.form-controls{
+    width: 220%;
+    height: 35px;
+}
+.login-form-1 .ForgetPwd{
+    color: #185ba1d5;
+    font-weight: 600;
+    text-decoration: none;
 }
