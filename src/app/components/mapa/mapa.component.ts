@@ -18,16 +18,7 @@ export class MapaComponent implements OnInit {
       this.latitud = e.coords.latitude;
       this.longitud = e.coords.longitude;
 
-<<<<<<< HEAD
-      this.marcasLocalizacion.push({
-        etiqueta: "YO",
-        latitud: this.latitud,
-        longitud: this.longitud,
-        movible: true
-      })
-=======
       
->>>>>>> c53d91e54dabe9adda4e13f15dcad4ec12881f72
     });
   }
 

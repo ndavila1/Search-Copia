@@ -16,7 +16,7 @@ export class RegistroComponent implements OnInit {
   }
   onAddUser(){
     this.authService.registerUser(this.email, this.password).then((res)=> {
-      this.router.navigate(['/home']);
+      this.router.navigate(['home']);
     }).catch( err => console.log('err', err.message));
   }
 }
