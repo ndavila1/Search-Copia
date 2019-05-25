@@ -21,6 +21,7 @@ export class ChatService {
   
         this.usuLogueado=this.afAuth.getUser();
         this.usuar = JSON.parse(localStorage.getItem('user'));
+        console.log(this.usuLogueado.correo);
       
 
     }

@@ -6,7 +6,6 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { usuario } from "./../modelos/usuario";
 import { map } from 'rxjs/operators';
-import { pipe } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
