@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   crear(): void {
     this.usuarioTemp.formulario.controls['foto'].setValue('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjQHqIwKGQ3UpzdHRtIwCuCrB4wuqQMpJpPvxXTkZI5MDt4M0');
     console.log(this.servicioFirebase.create(this.usuarioTemp.formulario.value));
-    this.authService.registerUser(this.usuarioTemp.formulario.get('correo').value,this.usuarioTemp.formulario.get('password').value);
+    //this.authService.registerUser(this.usuarioTemp.formulario.get('correo').value,this.usuarioTemp.formulario.get('password').value);
     this.onAddUser(this.usuarioTemp.formulario.get('correo').value,this.usuarioTemp.formulario.get('password').value);
     this.usuarioTemp.formulario.reset();
   }
