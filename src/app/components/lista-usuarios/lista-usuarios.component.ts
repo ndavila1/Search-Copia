@@ -37,6 +37,7 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   iniciarChat(usuario:usuario):void{
+    console.log(usuario);
     this._cs.setUsuarioReceptor(usuario);
     this.router.navigate(['home/chat']);
   }

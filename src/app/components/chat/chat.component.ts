@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
   public usuReceptor: usuario = {};
   constructor(public _cs: ChatService,public afAuth: AuthService) { 
 
-    this.usuLogueado=this._cs.getUsuarioL();
+    this.usuLogueado=this._cs.usuario;
     this.usuReceptor=this._cs.getUsuarioR();
     this.usuario = JSON.parse(localStorage.getItem('user'));
 

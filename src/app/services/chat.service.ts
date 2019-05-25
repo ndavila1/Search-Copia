@@ -12,16 +12,15 @@ export class ChatService {
   private itemsCollection: AngularFirestoreCollection<Mensaje>;
 
   public chats: Mensaje[] = [];
-  public usuLogueado: usuario = {};
   public usuReceptor: usuario = {};
-  public usuar: any;
+  
+  public usuario: any;
 
   constructor(private afs: AngularFirestore,
     public afAuth: AuthService) { 
   
-        this.usuLogueado=JSON.parse(localStorage.getItem('user'));
-        this.usuar = JSON.parse(localStorage.getItem('user'));
-        console.log(this.usuLogueado.correo);
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+        console.log(this.usuario);
       
 
     }
@@ -49,11 +48,11 @@ export class ChatService {
 
   agregarMensajes(text: string) {
     let mensaje: Mensaje = {
-      nombreLogueado: this.usuLogueado.nombre,
+      nombreLogueado: this.usuario.displayName,
       nombreReceptor:this.usuReceptor.nombre,
       mensaje: text,
       fecha: new Date().getTime(),
-      uidLogueado:this.usuLogueado.uid,
+      uidLogueado:this.usuario.uid,
       uidReceptor:this.usuReceptor.uid
     }
     return this.itemsCollection.add(mensaje);
@@ -63,9 +62,6 @@ export class ChatService {
     this.usuReceptor=usuario;
   }
 
-  getUsuarioL(){
-    return this.usuLogueado;
-  }
   getUsuarioR(){
     return this.usuReceptor;
   }
