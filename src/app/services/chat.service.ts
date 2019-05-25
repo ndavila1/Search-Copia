@@ -19,8 +19,9 @@ export class ChatService {
   constructor(private afs: AngularFirestore,
     public afAuth: AuthService) { 
   
-        this.usuLogueado=this.afAuth.getUser();
+        this.usuLogueado=JSON.parse(localStorage.getItem('user'));
         this.usuar = JSON.parse(localStorage.getItem('user'));
+        console.log(this.usuLogueado.correo);
       
 
     }

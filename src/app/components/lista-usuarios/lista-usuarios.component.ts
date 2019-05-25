@@ -19,7 +19,7 @@ export class ListaUsuariosComponent implements OnInit {
 
   constructor(public router: Router,public _cs: ChatService,
     public authService: AuthService, public servicioFirebase : UsuariosService ) {
-
+      this.user = JSON.parse(localStorage.getItem('user'));
    }
 
   ngOnInit() {

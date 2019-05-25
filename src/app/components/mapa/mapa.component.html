@@ -4,11 +4,10 @@
       *ngFor="let m of marcasLocalizacion; let i = index"
       [latitude]="m.latitud"
       [longitude]="m.longitud"
-      [label]="m.etiqueta"
       [markerDraggable]="m.movible">
       
     <agm-info-window>
-      <strong>InfoWindow content</strong>
+      <strong>{{m.etiqueta}}</strong>
     </agm-info-window>
     
   </agm-marker>
