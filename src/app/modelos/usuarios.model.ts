@@ -1,7 +1,7 @@
 import { FormGroup, FormControl } from '@angular/forms';
 
 export class Usuarios {
-    correo?: string;
+    email?: string;
     password?: string;
     nombre?: string;
     foto?: string;

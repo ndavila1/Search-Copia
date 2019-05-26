@@ -76,7 +76,7 @@ export class AuthService {
       );
       let Usuario: usuario = {
         nombre: this.user.displayName,
-        correo: this.user.email,
+        email: this.user.email,
         foto: this.user.photoURL,
         uid: this.user.uid
       }
@@ -102,7 +102,7 @@ export class AuthService {
   getUser() {
     let Usuario: usuario = {
       nombre: this.user.displayName,
-      correo: this.user.email,
+      email: this.user.email,
       foto: this.user.photoURL,
       uid: this.user.uid
     }
