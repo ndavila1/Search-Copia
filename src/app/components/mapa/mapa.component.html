@@ -1,15 +1,24 @@
 <div class="container-fluid">
   <agm-map [latitude]="this.latitud" [longitude]="this.longitud">
-    <agm-marker 
-      *ngFor="let m of marcasLocalizacion; let i = index"
-      [latitude]="m.latitud"
-      [longitude]="m.longitud"
-      [markerDraggable]="m.movible">
-      
-    <agm-info-window>
-      <strong>{{m.etiqueta}}</strong>
-    </agm-info-window>
-    
-  </agm-marker>
+    <agm-marker *ngFor="let m of marcasLocalizacion; let i = index" [latitude]="m.latitud" [longitude]="m.longitud"
+      [markerDraggable]="true">
+
+      <agm-info-window>
+        <h6>Usuario</h6>
+        <strong>{{m.etiqueta}}</strong>
+      </agm-info-window>
+
+    </agm-marker>
+    <agm-marker *ngFor="let n of marcasLocalizacionConvocatoria; let i = index" [latitude]="n.latitud"
+      [longitude]="n.longitud" [markerDraggable]="true">
+
+      <agm-info-window>
+        <h6>Convocatoria</h6>
+        <strong>{{n.etiqueta}}</strong>
+        <br>
+        <label>{{n.descripcion}}</label>
+      </agm-info-window>
+
+    </agm-marker>
   </agm-map>
 </div>

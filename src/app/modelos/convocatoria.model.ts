@@ -5,10 +5,13 @@ export class Convocatoria {
     estado: string;
     fechaInicio: string;
     fechaFin: string;
+    latitud: string;
+    longitud: string;
     UID: string;
     profesion: string;
     descripcion: string;
     habilidades: string;
+    hora: string;
 
     formulario = new FormGroup ({
         fechaInicio: new FormControl(''),
@@ -16,6 +19,9 @@ export class Convocatoria {
         UID: new FormControl(''),
         profesion: new FormControl(''),
         descripcion: new FormControl(''),
-        habilidades: new FormControl('')
+        habilidades: new FormControl(''),
+        latitud: new FormControl(''),
+        longitud: new FormControl(''),
+        hora: new FormControl('')
     });
 }
